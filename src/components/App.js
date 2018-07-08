@@ -1,5 +1,5 @@
 import React from 'react';
-import VotingButtons from './VotingButtons';
+import VotingButtonsContainer from '../containers/VotingButtonsContainer';
 import CountrySelector from './CountrySelector';
 
 class App extends React.Component {
@@ -9,7 +9,6 @@ class App extends React.Component {
     const reduxState = this.props.store.getState();
 
     this.state = {
-      selectedButton: reduxState.selectButton.selectedButton,
       selectedCountry: reduxState.country.selectedCountry,
       countryListOpen: reduxState.country.countryListOpen
     }
@@ -28,7 +27,6 @@ class App extends React.Component {
     const reduxState = store.getState();
 
     this.setState({
-      selectedButton: reduxState.selectButton.selectedButton,
       selectedCountry: reduxState.country.selectedCountry,
       countryListOpen: reduxState.country.countryListOpen
     });
@@ -37,10 +35,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <VotingButtons
-          selectedButton={this.state.selectedButton}
-          dispatch={this.props.store.dispatch}
-        />
+        <VotingButtonsContainer store={this.props.store} />
         <CountrySelector
           selectedCountry={this.state.selectedCountry}
           countryListOpen={this.state.countryListOpen}

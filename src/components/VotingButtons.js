@@ -3,14 +3,7 @@ import cx from 'classnames';
 
 const buttons = ['Camel', 'Duck', 'Donut', 'Potato', 'Mash potato'];
 
-function VotingButtons({selectedButton, dispatch}){
-  function handleClick(button){
-    dispatch({
-      type: 'SELECT_BUTTON',
-      selectedButton: button
-    })
-  }
-
+function VotingButtons({selectedButton, handleClick}){
   return (
     <div>
       {buttons.map( button => {
