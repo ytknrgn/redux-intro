@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import VotingButtons from '../components/VotingButtons';
 
 class VotingButtonsContainer extends React.Component {
   constructor(props){
     super(props);
-
-    const reduxState = this.props.store.getState();
+    debugger;
+    const reduxState = this.context.store.getState();
 
     this.state = {
       selectedButton: reduxState.selectButton.selectedButton
@@ -15,24 +16,20 @@ class VotingButtonsContainer extends React.Component {
   }
 
   componentDidMount(){
-    const { store } = this.props;
-
-    store.subscribe( () => {
+    this.context.store.subscribe( () => {
       this.updateFromStore();
     });
   }
 
   handleClick(button){
-    this.props.store.dispatch({
+    this.context.store.dispatch({
       type: 'SELECT_BUTTON',
       selectedButton: button
     })
   }
 
   updateFromStore(){
-    const { store } = this.props;
-
-    const reduxState = store.getState();
+    const reduxState = this.context.store.getState();
 
     this.setState({
       selectedButton: reduxState.selectButton.selectedButton
@@ -48,5 +45,9 @@ class VotingButtonsContainer extends React.Component {
     );
   }
 }
+
+VotingButtonsContainer.contextTypes = {
+  answer: PropTypes.number
+};
 
 export default VotingButtonsContainer;
