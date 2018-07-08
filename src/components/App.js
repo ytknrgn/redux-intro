@@ -1,5 +1,6 @@
 import React from 'react';
 import VotingButtons from './VotingButtons';
+import CountrySelector from './CountrySelector';
 
 class App extends React.Component {
   constructor(props){
@@ -36,6 +37,7 @@ class App extends React.Component {
           selectedButton={this.state.selectedButton}
           dispatch={this.props.store.dispatch}
         />
+        <CountrySelector />
       </div>
     )
   }
