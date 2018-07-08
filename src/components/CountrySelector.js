@@ -3,62 +3,56 @@ import cx from 'classnames';
 
 const countries = ['Belgium', 'France', 'Germany', 'Holland', 'Ireland', 'Italy', 'Luxemburg', 'Portugal', 'Spain'];
 
-class CountrySelector extends React.Component {
-  constructor(props){
-    super(props);
+function CountrySelector({ countryListOpen, selectedCountry, dispatch}){
 
-    this.state = {
-      selectedCountry: '',
+  function selectCountry(country){
+    dispatch({
+      type: 'SET_SELECTED_COUNTRY',
+      selectedCountry: country
+    });
+
+    dispatch({
+      type: 'SET_COUNTRY_LIST_OPEN',
       countryListOpen: false
-    }
-
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
+    });
   }
 
-  selectCountry(country){
-    this.setState({
-      selectedCountry: country,
-      countryListOpen: false
-    })
-  }
-
-  handleFocus(event){
-    this.setState({
+  function handleFocus(event){
+    dispatch({
+      type: 'SET_COUNTRY_LIST_OPEN',
       countryListOpen: true
     });
   }
 
-  handleBlur(event){
-    this.setState({
+  function handleBlur(event){
+    dispatch({
+      type: 'SET_COUNTRY_LIST_OPEN',
       countryListOpen: false
     });
   }
 
-  render(){
-    const listClasses = cx('country-input__list',  {
-      'country-input__list--visible': this.state.countryListOpen
-    });
+  const listClasses = cx('country-input__list',  {
+    'country-input__list--visible': countryListOpen
+  });
 
-    return (
-      <div className="country-input">
-        <input
-          type="text"
-          className="country-input__field"
-          value={this.state.selectedCountry}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
-        <div className={listClasses}>
-          <ul>
-            {countries.map( country => {
-              return <li key={country} onMouseDown={() => this.selectCountry(country)}>{country}</li>
-            })}
-          </ul>
-        </div>
+  return (
+    <div className="country-input">
+      <input
+        type="text"
+        className="country-input__field"
+        value={selectedCountry}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+      <div className={listClasses}>
+        <ul>
+          {countries.map( country => {
+            return <li key={country} onMouseDown={() => selectCountry(country)}>{country}</li>
+          })}
+        </ul>
       </div>
-    )
-  }
+    </div>
+  );
 }
 
 export default CountrySelector;

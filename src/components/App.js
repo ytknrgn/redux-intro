@@ -9,7 +9,9 @@ class App extends React.Component {
     const reduxState = this.props.store.getState();
 
     this.state = {
-      selectedButton: reduxState.selectedButton
+      selectedButton: reduxState.selectButton.selectedButton,
+      selectedCountry: reduxState.country.selectedCountry,
+      countryListOpen: reduxState.country.countryListOpen
     }
   }
 
@@ -26,7 +28,9 @@ class App extends React.Component {
     const reduxState = store.getState();
 
     this.setState({
-      selectedButton: reduxState.selectedButton
+      selectedButton: reduxState.selectButton.selectedButton,
+      selectedCountry: reduxState.country.selectedCountry,
+      countryListOpen: reduxState.country.countryListOpen
     });
   }
 
@@ -37,7 +41,11 @@ class App extends React.Component {
           selectedButton={this.state.selectedButton}
           dispatch={this.props.store.dispatch}
         />
-        <CountrySelector />
+        <CountrySelector
+          selectedCountry={this.state.selectedCountry}
+          countryListOpen={this.state.countryListOpen}
+          dispatch={this.props.store.dispatch}
+        />
       </div>
     )
   }
