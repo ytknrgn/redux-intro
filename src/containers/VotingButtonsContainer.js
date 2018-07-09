@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VotingButtons from '../components/VotingButtons';
+import { selectButton } from '../actions';
 
 class VotingButtonsContainer extends React.Component {
   constructor(props, context){
@@ -22,10 +23,7 @@ class VotingButtonsContainer extends React.Component {
   }
 
   handleClick(button){
-    this.context.store.dispatch({
-      type: 'SELECT_BUTTON',
-      selectedButton: button
-    })
+    this.context.store.dispatch(selectButton(button))
   }
 
   updateFromStore(){
