@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import VotingButtons from '../components/VotingButtons';
 
 class VotingButtonsContainer extends React.Component {
-  constructor(props){
-    super(props);
-    debugger;
+  constructor(props, context){
+    super(props, context);
+
     const reduxState = this.context.store.getState();
 
     this.state = {
@@ -47,7 +47,7 @@ class VotingButtonsContainer extends React.Component {
 }
 
 VotingButtonsContainer.contextTypes = {
-  answer: PropTypes.number
+  store: PropTypes.object
 };
 
 export default VotingButtonsContainer;
