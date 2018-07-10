@@ -1,9 +1,10 @@
 function movieInput(state = '', action){
   switch (action.type) {
-    case 'SUBMIT_SEARCH':
+    case 'SET_MOVIE_STRING':
       return action.movieString
-      break;
     default:
       return state
   }
 }
+
+export default movieInput;

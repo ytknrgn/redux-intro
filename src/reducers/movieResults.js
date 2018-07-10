@@ -1,9 +1,10 @@
 function movieResults(state = [], action){
   switch (action.type) {
-    case 'RECEIVE_SEARCH':
-      return action.searchResults
-      break;
+    case 'RECEIVE_MOVIES':
+      return action.movies
     default:
       return state
   }
 }
+
+export default movieResults;

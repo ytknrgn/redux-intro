@@ -1,11 +1,13 @@
 import React from 'react';
-import MovieSearch from './MovieSearch';
+import MovieSearchContainer from '../containers/MovieSearchContainer';
+import MovieResultsContainer from '../containers/MovieResultsContainer';
 
 class App extends React.Component {
   render(){
     return (
       <div>
-        <MovieSearch />
+        <MovieSearchContainer />
+        <MovieResultsContainer />
       </div>
     )
   }
