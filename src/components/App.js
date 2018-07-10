@@ -1,11 +1,11 @@
 import React from 'react';
-import VotingButtons from './VotingButtons';
+import MovieSearch from './MovieSearch';
 
 class App extends React.Component {
   render(){
     return (
       <div>
-        <VotingButtons />
+        <MovieSearch />
       </div>
     )
   }
