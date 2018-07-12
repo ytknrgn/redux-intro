@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import MovieResults from '../components/MovieResults';
 
-const mapStateToProps = state => {
+const mapStateToProps = reduxState => {
   return {
-    movies: state.movieResults
+    movies: reduxState.movieResults
   };
 };
 
