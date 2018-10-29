@@ -15,6 +15,7 @@ class App extends React.Component {
   componentDidMount(){
     const { store } = this.props;
     store.subscribe( () => {
+      console.log('2. subscribed to store updates');
       this.updateFromStore();
     });
   }
@@ -23,10 +24,11 @@ class App extends React.Component {
     const { store } = this.props;
 
     const reduxState = store.getState();
+    console.log('5. Get updated state from redux store');
 
     this.setState({
       selectedButton: reduxState.selectedButton
-    });
+    }, ()=> console.log('6.New value os state is', this.state));
   }
 
   render(){
