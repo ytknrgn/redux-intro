@@ -15,9 +15,9 @@ class App extends React.Component {
   componentDidMount(){
     const { store } = this.props;
     store.subscribe( () => {
-      console.log('2. subscribed to store updates');
       this.updateFromStore();
     });
+    console.log('2. subscribed to store updates');
   }
 
   updateFromStore(){

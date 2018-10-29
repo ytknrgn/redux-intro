@@ -27,16 +27,15 @@ function VotingButtons({selectedButton, dispatch}){
           'voting-button--selected': selectedButton === button
         });
         return (
-          <div>
+          
             <button
               key={button}
               className={classes}
               onClick={event => handleClick(button)}
             >{button}</button>
-            <a href="#" onClick={event => handleClear(event,button)}>Clear</a>
-          </div>
         );
       })}
+      <a href="#" onClick={event => handleClear(event,button)}>Clear</a>
     </div>
   );
 }
